@@ -60,7 +60,10 @@ class CategoryViewController: SwipeTableViewController {
             newCategory.backgroundColorHex = UIColor.randomFlat.hexValue()
             self.save(category: newCategory)
         }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(addAction)
+        alert.addAction(cancelAction)
+        
         present(alert, animated: true, completion: nil)
     }
     
