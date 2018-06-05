@@ -12,10 +12,13 @@ import ChameleonFramework
 
 class TodoListViewController: SwipeTableViewController {
 
+    @IBOutlet weak var navbar: UINavigationItem!
+    
     let realm = try! Realm()
     var todoItems: Results<Item>?
     var selectedCategory: Category? {
         didSet {
+            navbar.title = selectedCategory!.name
             loadItems()
             tableView.reloadData()
         }
