@@ -65,7 +65,7 @@ class TodoListViewController: SwipeTableViewController {
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         var textField = UITextField()
         let alert = UIAlertController(title: "Add New Item", message: "", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
+        let addAction = UIAlertAction(title: "Add Item", style: .default) { (action) in
             
             if let currentCategory = self.selectedCategory {
                 do {
@@ -85,7 +85,7 @@ class TodoListViewController: SwipeTableViewController {
             alertTextField.placeholder = "Create new item"
             textField = alertTextField
         }
-        alert.addAction(action)
+        alert.addAction(addAction)
         present(alert, animated: true, completion: nil)
     }
     
