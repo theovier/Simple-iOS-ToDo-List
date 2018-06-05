@@ -17,6 +17,7 @@ class TodoListViewController: SwipeTableViewController {
     var selectedCategory: Category? {
         didSet {
             loadItems()
+            tableView.reloadData()
         }
     }
    
@@ -87,7 +88,6 @@ class TodoListViewController: SwipeTableViewController {
     
     func loadItems() {
         todoItems = selectedCategory?.items.sorted(byKeyPath: "dateCreated", ascending: true)
-        tableView.reloadData()
     }
     
     override func updateModel(at indexPath: IndexPath) {
@@ -107,10 +107,12 @@ extension TodoListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text?.count == 0 {
             loadItems()
+            tableView.reloadData()
             DispatchQueue.main.async {
                 searchBar.resignFirstResponder()
             }
         } else {
+            loadItems()
             todoItems = todoItems?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
             tableView.reloadData()
         }
