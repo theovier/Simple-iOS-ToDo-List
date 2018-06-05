@@ -57,7 +57,7 @@ class CategoryViewController: SwipeTableViewController {
         let addAction = UIAlertAction(title: "Add Category", style: .default) { (action) in
             let newCategory = Category()
             newCategory.name = textField.text!
-            newCategory.backgroundColorHex = UIColor.randomFlat.hexValue()
+            newCategory.backgroundColorHex = RandomFlatColorWithShade(.light).hexValue()
             self.save(category: newCategory)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
